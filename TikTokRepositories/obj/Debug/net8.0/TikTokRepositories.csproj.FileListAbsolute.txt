@@ -13,3 +13,4 @@ D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokRepositories\bin\Debug\net8.0\Ti
 D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokRepositories\bin\Debug\net8.0\TikTokDAOs.pdb
 D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokRepositories\obj\Debug\net8.0\TikTokRepositories.csproj.AssemblyReference.cache
 D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokRepositories\obj\Debug\net8.0\TikTokRe.AE83E8C1.Up2Date
+D:\WorkSpaces\BE\.NET\TikTok_BE\TikTok_BE\TikTokRepositories\obj\Debug\net8.0\TikTokRepositories.sourcelink.json

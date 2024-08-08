@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokDAOs\\TikTokDAOs.csproj": {}
+    "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokDAOs\\TikTokDAOs.csproj": {}
   },
   "projects": {
-    "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokDAOs\\TikTokDAOs.csproj": {
+    "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokDAOs\\TikTokDAOs.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokDAOs\\TikTokDAOs.csproj",
+        "projectUniqueName": "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokDAOs\\TikTokDAOs.csproj",
         "projectName": "TikTokDAOs",
-        "projectPath": "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokDAOs\\TikTokDAOs.csproj",
+        "projectPath": "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokDAOs\\TikTokDAOs.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokDAOs\\obj\\",
+        "outputPath": "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokDAOs\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",

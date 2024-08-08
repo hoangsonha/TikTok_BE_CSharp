@@ -15,3 +15,4 @@ D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokService\bin\Debug\net8.0\TikTokR
 D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokService\bin\Debug\net8.0\TikTokRepositories.pdb
 D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokService\bin\Debug\net8.0\TikTokDAOs.dll
 D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokService\bin\Debug\net8.0\TikTokDAOs.pdb
+D:\WorkSpaces\BE\.NET\TikTok_BE\TikTok_BE\TikTokService\obj\Debug\net8.0\TikTokService.sourcelink.json

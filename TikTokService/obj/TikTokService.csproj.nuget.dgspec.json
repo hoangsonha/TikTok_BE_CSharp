@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokService\\TikTokService.csproj": {}
+    "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokService\\TikTokService.csproj": {}
   },
   "projects": {
-    "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokDAOs\\TikTokDAOs.csproj": {
+    "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokDAOs\\TikTokDAOs.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokDAOs\\TikTokDAOs.csproj",
+        "projectUniqueName": "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokDAOs\\TikTokDAOs.csproj",
         "projectName": "TikTokDAOs",
-        "projectPath": "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokDAOs\\TikTokDAOs.csproj",
+        "projectPath": "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokDAOs\\TikTokDAOs.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokDAOs\\obj\\",
+        "outputPath": "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokDAOs\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -95,14 +95,14 @@
         }
       }
     },
-    "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokRepositories\\TikTokRepositories.csproj": {
+    "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokRepositories\\TikTokRepositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokRepositories\\TikTokRepositories.csproj",
+        "projectUniqueName": "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokRepositories\\TikTokRepositories.csproj",
         "projectName": "TikTokRepositories",
-        "projectPath": "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokRepositories\\TikTokRepositories.csproj",
+        "projectPath": "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokRepositories\\TikTokRepositories.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokRepositories\\obj\\",
+        "outputPath": "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokRepositories\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -120,8 +120,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokDAOs\\TikTokDAOs.csproj": {
-                "projectPath": "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokDAOs\\TikTokDAOs.csproj"
+              "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokDAOs\\TikTokDAOs.csproj": {
+                "projectPath": "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokDAOs\\TikTokDAOs.csproj"
               }
             }
           }
@@ -160,14 +160,14 @@
         }
       }
     },
-    "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokService\\TikTokService.csproj": {
+    "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokService\\TikTokService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokService\\TikTokService.csproj",
+        "projectUniqueName": "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokService\\TikTokService.csproj",
         "projectName": "TikTokService",
-        "projectPath": "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokService\\TikTokService.csproj",
+        "projectPath": "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokService\\TikTokService.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokService\\obj\\",
+        "outputPath": "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -185,8 +185,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokRepositories\\TikTokRepositories.csproj": {
-                "projectPath": "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE\\TikTokRepositories\\TikTokRepositories.csproj"
+              "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokRepositories\\TikTokRepositories.csproj": {
+                "projectPath": "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokRepositories\\TikTokRepositories.csproj"
               }
             }
           }
