@@ -1,0 +1,15 @@
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokRepositories\bin\Debug\net8.0\TikTokRepositories.deps.json
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokRepositories\bin\Debug\net8.0\TikTokRepositories.dll
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokRepositories\bin\Debug\net8.0\TikTokRepositories.pdb
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokRepositories\obj\Debug\net8.0\TikTokRepositories.GeneratedMSBuildEditorConfig.editorconfig
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokRepositories\obj\Debug\net8.0\TikTokRepositories.AssemblyInfoInputs.cache
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokRepositories\obj\Debug\net8.0\TikTokRepositories.AssemblyInfo.cs
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokRepositories\obj\Debug\net8.0\TikTokRepositories.csproj.CoreCompileInputs.cache
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokRepositories\obj\Debug\net8.0\TikTokRepositories.dll
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokRepositories\obj\Debug\net8.0\refint\TikTokRepositories.dll
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokRepositories\obj\Debug\net8.0\TikTokRepositories.pdb
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokRepositories\obj\Debug\net8.0\ref\TikTokRepositories.dll
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokRepositories\bin\Debug\net8.0\TikTokDAOs.dll
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokRepositories\bin\Debug\net8.0\TikTokDAOs.pdb
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokRepositories\obj\Debug\net8.0\TikTokRepositories.csproj.AssemblyReference.cache
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokRepositories\obj\Debug\net8.0\TikTokRe.AE83E8C1.Up2Date

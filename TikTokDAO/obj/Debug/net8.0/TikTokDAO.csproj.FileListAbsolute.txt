@@ -1,0 +1,14 @@
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokDAO\bin\Debug\net8.0\TikTokDAO.deps.json
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokDAO\bin\Debug\net8.0\TikTokDAO.runtimeconfig.json
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokDAO\bin\Debug\net8.0\TikTokDAO.dll
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokDAO\bin\Debug\net8.0\TikTokDAO.pdb
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokDAO\obj\Debug\net8.0\TikTokDAO.csproj.AssemblyReference.cache
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokDAO\obj\Debug\net8.0\TikTokDAO.GeneratedMSBuildEditorConfig.editorconfig
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokDAO\obj\Debug\net8.0\TikTokDAO.AssemblyInfoInputs.cache
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokDAO\obj\Debug\net8.0\TikTokDAO.AssemblyInfo.cs
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokDAO\obj\Debug\net8.0\TikTokDAO.csproj.CoreCompileInputs.cache
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokDAO\obj\Debug\net8.0\TikTokDAO.dll
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokDAO\obj\Debug\net8.0\refint\TikTokDAO.dll
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokDAO\obj\Debug\net8.0\TikTokDAO.pdb
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokDAO\obj\Debug\net8.0\TikTokDAO.genruntimeconfig.cache
+D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE\TikTokDAO\obj\Debug\net8.0\ref\TikTokDAO.dll

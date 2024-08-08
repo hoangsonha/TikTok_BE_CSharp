@@ -1,0 +1,56 @@
+1. dưới solution (solution chir chua project) là project, dưới project là các tệp tin, wpf, class
+
+- xaml : ngôn ngữ frontend nhưng k chạy trên web mà chạy trên destop của window (windows là hệ điều hành, window là cửa sổ),
+	nếu muốn có UI (render) thì phải kế thừa Window
+
+- chỉ source code mới biến thành DLL (nhị phân), mỗi 1 proẹct là 1 DLL, các file k phải source code thì sẽ k quan tâm (json)
+
+-> copy local -> code về chung 1 chỗ để chạy đc 
+
+
+
+2. reference project: right click on dependancies -> add project reference -> ở prjject trong dependence chọn copy local
+
+- sau khi build solution thì các file DLL sẽ đc copy vào file bin của project, kéo tất cả các file lồng vào nhau lại,
+	vd như BLL -> DAL thì khi GUI -> BLL thì Gui sẽ có 2 file DLL của BLL và DAL do copy local 
+
+
+
+3. appsettings.json chứa chuỗi kết nối DB, do file này đc tạo ở ngoài cùng cấp file bin mà chương trình lại run ở trong file bin,
+	nên chuột phải và Copy To Output Directory để file .json này ở cùng file run để file DAL kết nối đc DB do file DAL cũng nằm trong bin
+
+	- sau khi build lại thì file .json sẽ ở trong file bin
+
+
+4. để các thư viện liên quan đến DB ở DAL 
+(EntityFrameworkCore, EntityFrameworkCore.Design, EntityFrameworkCore.SqlServer, EntityFrameworkCore.Tools, 
+Microsoft.Extensions.Configuration, Microsoft.Extensions.Configuration.Json)  ->>>> build
+
+
+
+5. DB Context : dotnet ef dbcontext scaffold (auto - genarated)
+
+dotnet ef dbcontext scaffold "Server=localhost;uid=sa;pwd=12345;database=AirConditionerShop;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir (Entities --context-dir ".\" (. tức là tạo tại thư mục này)) or (Models tên tự đặt)  (tach phan connect DB Context ra rieng)
+
+dotnet ef dbcontext scaffold "Server=localhost;uid=sa;pwd=12345;database=TikTok;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir Entities --context-dir ".\"
+
+6. chuyển chuỗi kết nối qua file appsetting.json, cái ở bước 3
+
+{
+	"ConnectionStrings": {
+	"DefaultConnectionStringDB": "server =(local); database=AirConditionerShop2024DB;uid=sa;pwd=1234567890; TrustServerCertificate=True"
+	}
+}
+
+
+7. tạo hàm GetConnectionString() ở context của DAL để connect to DB qua appsettings.json
+
+private string GetConnectionString()
+{
+	IConfiguration config = new ConfigurationBuilder()
+ 		.SetBasePath(Directory.GetCurrentDirectory())
+            	.AddJsonFile("appsettings.json",true,true)
+            	.Build();
+	var strConn = config["ConnectionStrings:DefaultConnectionStringDB"];
+	return strConn;
+}
