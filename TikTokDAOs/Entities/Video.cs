@@ -9,11 +9,13 @@ public partial class Video
 
     public string? Title { get; set; }
 
-    public string? Video1 { get; set; }
-
     public int? Liked { get; set; }
 
-    public int? Comment { get; set; }
+    public int? Commented { get; set; }
+
+    public int? Shared { get; set; }
+
+    public string? SrcVideo { get; set; }
 
     public int? IdAccount { get; set; }
 

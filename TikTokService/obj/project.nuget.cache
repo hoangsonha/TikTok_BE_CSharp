@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WYe/i04zuQg=",
+  "dgSpecHash": "cTfD1NrfrBs=",
   "success": true,
-  "projectFilePath": "D:\\WorkSpaces\\BE\\.NET\\TikTok_BE\\TikTok_BE\\TikTokService\\TikTokService.csproj",
+  "projectFilePath": "D:\\WorkSpaces\\BE\\.NET\\Tiktok_BE\\TikTok_BE_CSharp\\TikTokService\\TikTokService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

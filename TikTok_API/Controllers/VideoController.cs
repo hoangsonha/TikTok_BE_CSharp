@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using TikTokAPI.Request;
 using TikTokDAOs;
-using TikTokDAOs.Entities;
 using TikTokService.Services;
 using TikTokService.ServicesImp;
+using TikTokDAOs.Entities;
 
 namespace TikTokAPI.Controllers
 {
@@ -59,11 +59,11 @@ namespace TikTokAPI.Controllers
         public Video PostAccount(VideoRequest requestVideo)
         {
             Video postVideo = new();
-            postVideo.Id = requestVideo.ID;
             postVideo.Title = requestVideo.Title;
-            postVideo.Video1 = requestVideo.Video1;
-            postVideo.Comment = requestVideo.Comment;
-            postVideo.Liked = requestVideo.Liked;
+            postVideo.SrcVideo = requestVideo.SrcVideo;
+            postVideo.Commented = 0;
+            postVideo.Liked = 0;
+            postVideo.Shared = 0;
             postVideo.IdAccount = requestVideo.AccountID;
             return _videoService.AddVideo(postVideo);
         }

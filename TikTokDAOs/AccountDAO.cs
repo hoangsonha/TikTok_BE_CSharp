@@ -9,7 +9,7 @@ namespace TikTokDAOs
 {
     public class AccountDAO
     {
-        private readonly TikTokContext _context = null;
+        private readonly TikTokDbContext _context = null;
 
         public AccountDAO()
         {

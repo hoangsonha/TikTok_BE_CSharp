@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TikTokDAOs.Entities;
 using TikTokRepositories.Repositories;
 using TikTokRepositories.RepositoriesImp;
 using TikTokService.Services;
+using TikTokDAOs.Entities;
 
 namespace TikTokService.ServicesImp
 {
@@ -26,7 +26,7 @@ namespace TikTokService.ServicesImp
 
         public Video DeleteVideo(int id)
         {
-            return (_videoRepository.DeleteAccount(id));    
+            return (_videoRepository.DeleteAccount(id));
         }
 
         public List<Video> GetAllVideos()
@@ -36,7 +36,7 @@ namespace TikTokService.ServicesImp
 
         public Video GetVideoByID(int id)
         {
-            return _videoRepository.GetVideoByID(id);  
+            return _videoRepository.GetVideoByID(id);
         }
 
         public Video UpdateVideo(Video video, int id)

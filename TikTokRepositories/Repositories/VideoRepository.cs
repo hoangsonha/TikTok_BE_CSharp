@@ -16,6 +16,6 @@ namespace TikTokRepositories.Repositories
         public Video AddVideo(Video video);
         public Video UpdateAccount(Video video, int id);
         public Video DeleteAccount(int id);
- 
+
     }
 }

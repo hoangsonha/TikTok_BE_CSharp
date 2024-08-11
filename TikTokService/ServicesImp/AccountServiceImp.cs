@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TikTokDAOs.Entities;
 using TikTokRepositories.Repositories;
 using TikTokRepositories.RepositoriesImp;
 using TikTokService.Services;
+using TikTokDAOs.Entities;
 
 namespace TikTokService.ServicesImp
 {

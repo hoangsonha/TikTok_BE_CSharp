@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TikTokRepositories")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5952e34537d2b6a9cefc3b27625758fe369fd7a9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7bc5031abc3b79210fb17aa59f580ec798286ea8")]
 [assembly: System.Reflection.AssemblyProductAttribute("TikTokRepositories")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TikTokRepositories")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

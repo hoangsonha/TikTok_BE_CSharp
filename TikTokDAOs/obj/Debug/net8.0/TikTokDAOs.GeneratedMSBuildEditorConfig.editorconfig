@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TikTokDAOs
-build_property.ProjectDir = D:\WorkSpaces\BE\.NET\TikTok_BE\TikTok_BE\TikTokDAOs\
+build_property.ProjectDir = D:\WorkSpaces\BE\.NET\Tiktok_BE\TikTok_BE_CSharp\TikTokDAOs\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TikTokDAOs.Entities;
 
+
 namespace TikTokRepositories.Repositories
 {
     public interface AccountRepository

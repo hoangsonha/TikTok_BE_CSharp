@@ -9,13 +9,13 @@ namespace TikTokDAOs
 {
     public class VideoDAO
     {
-        private readonly TikTokContext _context = null;
+        private readonly TikTokDbContext _context = null;
         private readonly AccountDAO _accountDAO = null;
 
         public VideoDAO()
         {
             if (_context == null) _context = new();
-            if(_accountDAO == null) _accountDAO = new AccountDAO();
+            if (_accountDAO == null) _accountDAO = new AccountDAO();
         }
 
         public List<Video> GetAllVideos()
@@ -32,7 +32,7 @@ namespace TikTokDAOs
         {
             _context.Videos.Add(video);
             _context.SaveChanges();
-            
+
             return video;
         }
 
@@ -42,8 +42,7 @@ namespace TikTokDAOs
             if (vid != null)
             {
                 vid.Title = video.Title;
-                vid.Video1 = video.Video1;
-
+                vid.SrcVideo = video.SrcVideo;
                 _context.Videos.Update(vid);
                 _context.SaveChanges();
             }

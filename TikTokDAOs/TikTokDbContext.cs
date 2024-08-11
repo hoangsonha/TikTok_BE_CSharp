@@ -6,13 +6,13 @@ using TikTokDAOs.Entities;
 
 namespace TikTokDAOs;
 
-public partial class TikTokContext : DbContext
+public partial class TikTokDbContext : DbContext
 {
-    public TikTokContext()
+    public TikTokDbContext()
     {
     }
 
-    public TikTokContext(DbContextOptions<TikTokContext> options)
+    public TikTokDbContext(DbContextOptions<TikTokDbContext> options)
         : base(options)
     {
     }
@@ -39,9 +39,9 @@ public partial class TikTokContext : DbContext
     {
         modelBuilder.Entity<Account>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__account__3213E83F63A23030");
+            entity.HasKey(e => e.Id).HasName("PK__Account__3213E83F34D0B52A");
 
-            entity.ToTable("account");
+            entity.ToTable("Account");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Avatar)
@@ -68,22 +68,22 @@ public partial class TikTokContext : DbContext
 
         modelBuilder.Entity<Video>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__video__3213E83F93729910");
+            entity.HasKey(e => e.Id).HasName("PK__Video__3213E83F40487D80");
 
-            entity.ToTable("video");
+            entity.ToTable("Video");
 
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("id");
-            entity.Property(e => e.Comment).HasColumnName("comment");
-            entity.Property(e => e.IdAccount).HasColumnName("id_account");
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Commented).HasColumnName("commented");
+            entity.Property(e => e.IdAccount).HasColumnName("idAccount");
             entity.Property(e => e.Liked).HasColumnName("liked");
-            entity.Property(e => e.Title)
-                .HasMaxLength(50)
-                .HasColumnName("title");
-            entity.Property(e => e.Video1)
+            entity.Property(e => e.Shared).HasColumnName("shared");
+            entity.Property(e => e.SrcVideo)
                 .HasMaxLength(255)
-                .HasColumnName("video");
+                .IsUnicode(false)
+                .HasColumnName("srcVideo");
+            entity.Property(e => e.Title)
+                .HasMaxLength(255)
+                .HasColumnName("title");
 
             entity.HasOne(d => d.IdAccountNavigation).WithMany(p => p.Videos)
                 .HasForeignKey(d => d.IdAccount)

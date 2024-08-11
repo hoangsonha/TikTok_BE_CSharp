@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TikTokDAOs;
-using TikTokDAOs.Entities;
 using TikTokRepositories.Repositories;
+using TikTokDAOs.Entities;
 
 namespace TikTokRepositories.RepositoriesImp
 {
