@@ -17,5 +17,6 @@ namespace TikTokRepositories.Repositories
         public Video UpdateAccount(Video video, int id);
         public Video DeleteAccount(int id);
 
+        public int GetTotalLikedVideoByAccount(int accountID);
     }
 }

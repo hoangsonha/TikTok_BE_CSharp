@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TikTokAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7bc5031abc3b79210fb17aa59f580ec798286ea8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+acb27b41d64c8700ea64aa3f6eeae9572c09c5f4")]
 [assembly: System.Reflection.AssemblyProductAttribute("TikTokAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TikTokAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

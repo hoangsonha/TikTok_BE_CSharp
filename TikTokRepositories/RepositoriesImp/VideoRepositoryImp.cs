@@ -38,5 +38,10 @@ namespace TikTokRepositories.RepositoriesImp
         {
             return _videoDAO.DeleteVideo(id);
         }
+
+        public int GetTotalLikedVideoByAccount(int accountID)
+        {
+            return _videoDAO.GetTotalLikedVideo(accountID);
+        }
     }
 }

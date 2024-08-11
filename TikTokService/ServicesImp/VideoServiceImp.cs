@@ -43,5 +43,10 @@ namespace TikTokService.ServicesImp
         {
             return _videoRepository.UpdateAccount(video, id);
         }
+
+        public int GetTotalLikedVideoByAccount(int accountID)
+        {
+            return _videoRepository.GetTotalLikedVideoByAccount(accountID);
+        }
     }
 }

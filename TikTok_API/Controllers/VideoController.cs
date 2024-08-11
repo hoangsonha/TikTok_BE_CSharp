@@ -34,6 +34,13 @@ namespace TikTokAPI.Controllers
             return _videoService.GetAllVideos().ToList();
         }
 
+        // GET: api/Video
+        [HttpGet("liked/hihi")]
+        public int GetTotalLikedByAccountID(int accountID)
+        {
+            return _videoService.GetTotalLikedVideoByAccount(accountID);
+        }
+
         // GET: api/Account/5
         [HttpGet("{id}")]
         public Video GetVideo(int id)

@@ -56,5 +56,10 @@ namespace TikTokDAOs
             _context.SaveChanges();
             return video;
         }
+
+        public int GetTotalLikedVideo(int accountID)
+        {
+            return _context.Videos.Where(video => video.IdAccount == accountID).Sum(video => video.Liked).Value;
+        }
     }
 }
