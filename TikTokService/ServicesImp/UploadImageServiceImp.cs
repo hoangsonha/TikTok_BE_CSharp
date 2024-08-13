@@ -11,7 +11,9 @@ using System.Drawing.Imaging;
 using Google.Apis.Auth.OAuth2;
 using FirebaseAdmin;
 using Google.Cloud.Storage.V1;
-
+using System.Net;
+using System.IO;
+using Google.Apis.Storage.v1.Data;
 
 
 namespace TikTokService.ServicesImp
@@ -21,48 +23,112 @@ namespace TikTokService.ServicesImp
 
         private readonly String bucketName = "swp391-f046d.appspot.com";
         private readonly String contentType = "image/png";
-        private readonly String getStream = "Configs/swp391-f046d-firebase-adminsdk-drdyq-bc797fce80.json";
+        private readonly String getStream = "Configs/swp391-f046d-firebase-adminsdk-drdyq-6dc6c24b5a.json";
         private readonly String getURL = @"https://firebasestorage.googleapis.com/v0/b/swp391-f046d.appspot.com/o/{0}?alt=media";
         private readonly String folderStorage = "Tiktok_BE";
 
+        private readonly FirebaseApp app;
 
         public UploadImageServiceImp()
         {
-            FirebaseApp.Create(new AppOptions(){ Credential = GoogleCredential.FromFile(getStream) });
+            if (FirebaseApp.DefaultInstance == null)      
+                app = FirebaseApp.Create(new AppOptions(){ Credential = GoogleCredential.FromFile(getStream) });
+            else
+                app = FirebaseApp.DefaultInstance;
         }
+
+        public async Task<string> UploadFileAsync(string filePath)
+        {
+            try
+            {
+                string fileName = Path.GetFileName(filePath);
+                string objectName = $"{folderStorage}/{fileName}";
+
+                var storageClient = StorageClient.Create(app.Options.Credential);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                {
+                    await storageClient.UploadObjectAsync(bucketName, objectName, contentType, fileStream);
+                }
+
+                string downloadUrl = string.Format(getURL, Uri.EscapeDataString(objectName));
+
+                return downloadUrl;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error during file upload: {ex.Message}");
+
+                return null;
+            }
+        }
+
 
         public async Task<string> UploadFileBase64Async(string base64Image)
         {
-            string fileName = Guid.NewGuid().ToString() + ".png";  // Generate a random file name
-            string folder = $"{folderStorage}/{fileName}";
-            string objectName = folder;
-
-            // Create a StorageClient using the service account credentials
-            GoogleCredential credential;
-            using (var fileStream = new FileStream(getStream, FileMode.Open, FileAccess.Read))
+            try
             {
-                credential = GoogleCredential.FromStream(fileStream);
+                string fileName = Guid.NewGuid().ToString() + ".png";
+                string folder = $"{folderStorage}/{fileName}";          // create path contains folder and fileName (fileName is genareted random + .png)
+                string objectName = folder;
+
+                var storageClient = StorageClient.Create(app.Options.Credential);   // create firebaseStorage
+
+                byte[] imageBytes = Convert.FromBase64String(base64Image);      // convert base64 to byte[]
+
+                using (var memoryStream = new MemoryStream(imageBytes))
+                {
+                    await storageClient.UploadObjectAsync(bucketName, objectName, contentType, memoryStream);  // upload to firebase
+                }
+                string downloadUrl = string.Format(getURL, Uri.EscapeDataString(folder));       // format url which is located in firebase
+
+                return downloadUrl;
             }
-
-            var storageClient = StorageClient.Create(credential);
-
-            // Decode the base64 string to bytes
-            byte[] imageBytes = Convert.FromBase64String(base64Image);
-
-            using (var memoryStream = new MemoryStream(imageBytes))
+            catch (Exception ex) 
             {
-                // Upload the file to Google Cloud Storage
-                await storageClient.UploadObjectAsync(bucketName, objectName, contentType, memoryStream);
+                Console.WriteLine($"Error at UploadFileBase64Async : {ex}");
+                return null;
             }
-
-            string downloadUrl = string.Format(getURL, Uri.EscapeDataString(folder));
-            return downloadUrl;
         }
 
-        public String Upload(IFormFile file)
+
+        private async Task<string> ConvertToFileAsync(IFormFile file, string fileName)
         {
-            return null;
+            try
+            {
+                var filePath = Path.Combine(Path.GetTempPath(), fileName);
+
+                await using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);        // Copy the file data to a new file
+                }
+
+                return filePath;
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine($"Error at ConvertToFileAsync : {ex}");
+                return null;
+            }
         }
+
+        public async Task<string> Upload(IFormFile file)
+        {
+            try
+            {
+                var fileName = Path.GetFileName(file.FileName);                       // Get the file name
+                fileName = $"{Guid.NewGuid()}{Path.GetExtension(fileName)}";          // Generate a unique file name with extension
+                var filePath = await ConvertToFileAsync(file, fileName);              // Convert IFormFile to File path
+                var url = await UploadFileAsync(filePath);                            // Upload the file and get the URL
+                File.Delete(filePath);                                                // Delete the file after upload
+                return url;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
 
         public String Upload(List<IFormFile> files)
         {

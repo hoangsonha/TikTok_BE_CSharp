@@ -11,7 +11,7 @@ namespace TikTokService.Services
     {
         public Task<string> UploadFileBase64Async(string base64Image);
 
-        public String Upload(IFormFile file);
+        public Task<string> Upload(IFormFile file);
 
         public String Upload(List<IFormFile> files);
 

@@ -54,15 +54,33 @@ namespace TikTokAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public Account PutAccount(int id, Account account)
+        public Account PutAccount(int id, UpdateRequest request)
         {
-            return _accountService.UpdateAccount(account, id);
+            Account account = _accountService.GetAccountByID(id);
+            if(account != null)
+            {
+                if(request.Contact != null)
+                    account.Contact = request.Contact;
+                
+                if(request.Password != null && request.NewPassword != null && request.Password == account.Password)
+                    account.Password = request.NewPassword;
+                
+                if(request.FullName != null)
+                    account.FullName = request.FullName;
+
+                Task<String> url = _uploadImageSerive.Upload(request.Avatar);
+
+                if(url.Result != null)
+                    account.Avatar = url.Result;
+
+                return _accountService.UpdateAccount(account, id);
+            }
+            return null;    
         }
 
         [HttpPost]
-        public Account PostAccount(RegisterRequest request)
+        public Account CreateAccount(RegisterRequest request)
         {
-
             String base64 = _uploadImageSerive.GenerateImageWithInitial(request.Email);
             Task<String> avatarStorage = _uploadImageSerive.UploadFileBase64Async(base64);
             String avatar = avatarStorage.Result;
