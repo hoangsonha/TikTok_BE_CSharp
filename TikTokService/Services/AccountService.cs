@@ -9,6 +9,7 @@ namespace TikTokService.Services
 {
     public interface AccountService
     {
+        public Account CheckLogin(string email, string password);
         public List<Account> GetAllAccounts();
         public Account GetAccountByID(int id);
         public Account AddAccount(Account account);

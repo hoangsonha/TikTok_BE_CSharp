@@ -27,6 +27,11 @@ namespace TikTokRepositories.RepositoriesImp
             return _accountDAO.DeleteAccount(id);
         }
 
+        public Account GetAccountByEmail(String email)
+        {
+            return _accountDAO.GetAccountByEmail(email);
+        }
+
         public Account GetAccountByID(int id)
         {
             return _accountDAO.GetAccountByID(id);

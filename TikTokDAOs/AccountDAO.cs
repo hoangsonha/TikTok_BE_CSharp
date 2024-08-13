@@ -26,6 +26,11 @@ namespace TikTokDAOs
             return _context.Accounts.FirstOrDefault(acc => acc.Id == id);
         }
 
+        public Account GetAccountByEmail(String email)
+        {
+            return _context.Accounts.FirstOrDefault(acc => acc.Email == email);
+        }
+
         public Account AddAccount(Account account)
         {
             _context.Accounts.Add(account);

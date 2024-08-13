@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TikTokAPI", "TikTok_API\TikTokAPI.csproj", "{D14216C8-C455-4CE9-9FC8-C457FAE4B7EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TikTokAPI", "TikTok_API\TikTokAPI.csproj", "{D14216C8-C455-4CE9-9FC8-C457FAE4B7EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TikTokRepositories", "TikTokRepositories\TikTokRepositories.csproj", "{5AD43BD9-887C-4404-A70A-22947C6508FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TikTokRepositories", "TikTokRepositories\TikTokRepositories.csproj", "{5AD43BD9-887C-4404-A70A-22947C6508FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TikTokService", "TikTokService\TikTokService.csproj", "{CF13CAFD-AACC-4298-A3C0-A116DE750FA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TikTokService", "TikTokService\TikTokService.csproj", "{CF13CAFD-AACC-4298-A3C0-A116DE750FA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TikTokDAOs", "TikTokDAOs\TikTokDAOs.csproj", "{64E53C43-3235-4CDA-806C-842D469ED5AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TikTokDAOs", "TikTokDAOs\TikTokDAOs.csproj", "{64E53C43-3235-4CDA-806C-842D469ED5AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

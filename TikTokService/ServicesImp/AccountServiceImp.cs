@@ -19,7 +19,15 @@ namespace TikTokService.ServicesImp
             if (_accountRepository == null) _accountRepository = new AccountRepositoryImp();
         }
 
-
+        public Account CheckLogin(string email, string password)
+        {
+            Account account = _accountRepository.GetAccountByEmail(email);
+            if (account != null) 
+                if (account.Password == password)    
+                    return account;
+            
+            return null;
+        }
         public Account AddAccount(Account account)
         {
             return _accountRepository.AddAccount(account);

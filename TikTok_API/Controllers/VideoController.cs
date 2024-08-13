@@ -12,6 +12,7 @@ using TikTokService.Services;
 using TikTokService.ServicesImp;
 using TikTokDAOs.Entities;
 
+
 namespace TikTokAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -20,11 +21,13 @@ namespace TikTokAPI.Controllers
     {
         private readonly VideoService _videoService = null;
         private readonly AccountService _accountService = null;
+        
 
         public VideoController()
         {
-           if(_videoService == null) _videoService = new VideoServiceImp();
+            if(_videoService == null) _videoService = new VideoServiceImp();
             if (_accountService == null) _accountService = new AccountServiceImp();
+            
         }
 
         // GET: api/Video
@@ -81,6 +84,8 @@ namespace TikTokAPI.Controllers
         {
             return _videoService.DeleteVideo(id);
         }
+
+        
 
     }
 }
