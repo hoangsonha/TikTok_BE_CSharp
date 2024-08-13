@@ -10,10 +10,12 @@ using TikTokService.ServicesImp;
 using TikTokDAOs.Entities;
 using TikTokAPI.Request;
 using TikTokAPI.Response;
+using System.Collections;
 
 namespace TikTokAPI.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
+    [Route("")]
     [ApiController]
     public class AccountController : ControllerBase
     {
@@ -37,24 +39,26 @@ namespace TikTokAPI.Controllers
         }
 
 
-        [HttpGet]
-        public List<Account> GetAccounts()
+        [HttpGet("getAll")]
+        public ObjectResponse GetAccounts()
         {
-            return _accountService.GetAllAccounts().ToList();
+            List<Account> lists = _accountService.GetAllAccounts().ToList();
+            if(lists.Count > 0) return new ObjectResponse() { Code = "Success", Message = "Get accounts successfully", data = lists };
+            return new ObjectResponse() { Code = "Failed", Message = "Get accounts failed", data = null };
         }
 
-        [HttpGet("{id}")]
-        public Account GetAccount(int id)
+        [HttpGet("account/{id}")]
+        public ObjectResponse GetAccount(int id)
         {
             var account = _accountService.GetAccountByID(id);
 
-            if (account == null) return null;
+            if (account != null) return new ObjectResponse() { Code = "Success", Message = "Get account successfully", data = account };
 
-            return account;
+            return new ObjectResponse() { Code = "Failed", Message = "Get account failed", data = null };
         }
 
-        [HttpPut("{id}")]
-        public Account PutAccount(int id, UpdateRequest request)
+        [HttpPut("account/update/{id}")]
+        public ObjectResponse PutAccount(int id, UpdateRequest request)
         {
             Account account = _accountService.GetAccountByID(id);
             if(account != null)
@@ -73,13 +77,13 @@ namespace TikTokAPI.Controllers
                 if(url.Result != null)
                     account.Avatar = url.Result;
 
-                return _accountService.UpdateAccount(account, id);
+                return new ObjectResponse() { Code = "Success", Message = "Update account successfully", data = _accountService.UpdateAccount(account, id) };
             }
-            return null;    
+            return new ObjectResponse() { Code = "Success", Message = "Update account successfully", data = account };
         }
 
-        [HttpPost]
-        public Account CreateAccount(RegisterRequest request)
+        [HttpPost("account/create")]
+        public ObjectResponse CreateAccount(RegisterRequest request)
         {
             String base64 = _uploadImageSerive.GenerateImageWithInitial(request.Email);
             Task<String> avatarStorage = _uploadImageSerive.UploadFileBase64Async(base64);
@@ -94,10 +98,10 @@ namespace TikTokAPI.Controllers
                 Followed = 0,
                 Liked = 0
             };
-            return _accountService.AddAccount(account);
+            return new ObjectResponse() { Code = "Success", Message = "Add account successfully", data = _accountService.AddAccount(account) };
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("account/delete/{id}")]
         public Account DeleteAccount(int id)
         {
             return _accountService.DeleteAccount(id);
