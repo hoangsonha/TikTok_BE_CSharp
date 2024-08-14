@@ -14,7 +14,6 @@ namespace TikTokService.Services
         public Video AddVideo(Video video);
         public Video UpdateVideo(Video video, int id);
         public Video DeleteVideo(int id);
-
         public int GetTotalLikedVideoByAccount(int accountID);
     }
 }

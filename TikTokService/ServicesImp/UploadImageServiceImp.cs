@@ -23,9 +23,11 @@ namespace TikTokService.ServicesImp
 
         private readonly String bucketName = "swp391-f046d.appspot.com";
         private readonly String contentType = "image/png";
+        private readonly String contentTypeVideo = "video/mp4";
         private readonly String getStream = "Configs/swp391-f046d-firebase-adminsdk-drdyq-6dc6c24b5a.json";
         private readonly String getURL = @"https://firebasestorage.googleapis.com/v0/b/swp391-f046d.appspot.com/o/{0}?alt=media";
         private readonly String folderStorage = "Tiktok_BE";
+        private readonly String folderStorageVideo = "Tiktok_Video";
 
         private readonly FirebaseApp app;
 
@@ -49,6 +51,32 @@ namespace TikTokService.ServicesImp
                 using (var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
                 {
                     await storageClient.UploadObjectAsync(bucketName, objectName, contentType, fileStream);
+                }
+
+                string downloadUrl = string.Format(getURL, Uri.EscapeDataString(objectName));
+
+                return downloadUrl;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error during file upload: {ex.Message}");
+
+                return null;
+            }
+        }
+
+        public async Task<string> UploadFileVideoAsync(string filePath)
+        {
+            try
+            {
+                string fileName = Path.GetFileName(filePath);
+                string objectName = $"{folderStorageVideo}/{fileName}";
+
+                var storageClient = StorageClient.Create(app.Options.Credential);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                {
+                    await storageClient.UploadObjectAsync(bucketName, objectName, contentTypeVideo, fileStream);
                 }
 
                 string downloadUrl = string.Format(getURL, Uri.EscapeDataString(objectName));
@@ -108,6 +136,23 @@ namespace TikTokService.ServicesImp
             catch (Exception ex) 
             {
                 Console.WriteLine($"Error at ConvertToFileAsync : {ex}");
+                return null;
+            }
+        }
+
+        public async Task<string> UploadVideo(IFormFile file)
+        {
+            try
+            {
+                var fileName = Path.GetFileName(file.FileName);                       // Get the file name
+                fileName = $"{Guid.NewGuid()}{Path.GetExtension(fileName)}";          // Generate a unique file name with extension
+                var filePath = await ConvertToFileAsync(file, fileName);              // Convert IFormFile to File path
+                var url = await UploadFileVideoAsync(filePath);                            // Upload the file and get the URL
+                File.Delete(filePath);                                                // Delete the file after upload
+                return url;
+            }
+            catch (Exception e)
+            {
                 return null;
             }
         }

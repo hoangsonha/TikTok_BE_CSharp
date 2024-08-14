@@ -11,40 +11,42 @@ using TikTokDAOs;
 using TikTokService.Services;
 using TikTokService.ServicesImp;
 using TikTokDAOs.Entities;
+using TikTokAPI.Response;
 
 
 namespace TikTokAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("video")]
     [ApiController]
     public class VideoController : ControllerBase
     {
         private readonly VideoService _videoService = null;
         private readonly AccountService _accountService = null;
+        private readonly UploadImageSerive _uploadImageSerive = null;
         
 
         public VideoController()
         {
             if(_videoService == null) _videoService = new VideoServiceImp();
             if (_accountService == null) _accountService = new AccountServiceImp();
-            
+            if (_uploadImageSerive == null) _uploadImageSerive = new UploadImageServiceImp();
         }
 
-        // GET: api/Video
-        [HttpGet]
-        public List<Video> GetVideos()
+        [HttpGet("getAll")]
+        public ObjectResponse GetVideos()
         {
-            return _videoService.GetAllVideos().ToList();
+            List<Video> lists = _videoService.GetAllVideos().ToList();
+            if (lists.Count > 0) return new ObjectResponse() { Code = "Success", Message = "Get videos successfully", data = lists };
+            return new ObjectResponse() { Code = "Failed", Message = "Get videos failed", data = null };
         }
 
-        // GET: api/Video
-        [HttpGet("liked/hihi")]
+        [HttpGet("liked")]
         public int GetTotalLikedByAccountID(int accountID)
         {
             return _videoService.GetTotalLikedVideoByAccount(accountID);
         }
 
-        // GET: api/Account/5
+
         [HttpGet("{id}")]
         public Video GetVideo(int id)
         {
@@ -55,22 +57,22 @@ namespace TikTokAPI.Controllers
             return video;
         }
 
-        // PUT: api/Account/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public Video PutAccount(int id, Video video)
         {
             return _videoService.UpdateVideo(video, id);
         }
 
-        // POST: api/Account
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+
+        [HttpPost("video/create")]
         public Video PostAccount(VideoRequest requestVideo)
         {
+
+            Task<string> srcVideo = _uploadImageSerive.UploadVideo(requestVideo.SrcVideo);
+     
             Video postVideo = new();
             postVideo.Title = requestVideo.Title;
-            postVideo.SrcVideo = requestVideo.SrcVideo;
+            postVideo.SrcVideo = srcVideo.Result;
             postVideo.Commented = 0;
             postVideo.Liked = 0;
             postVideo.Shared = 0;
@@ -78,7 +80,7 @@ namespace TikTokAPI.Controllers
             return _videoService.AddVideo(postVideo);
         }
 
-        // DELETE: api/Account/5
+
         [HttpDelete("{id}")]
         public Video DeleteAccount(int id)
         {

@@ -13,6 +13,8 @@ namespace TikTokService.Services
 
         public Task<string> Upload(IFormFile file);
 
+        public Task<string> UploadVideo(IFormFile file);
+
         public String Upload(List<IFormFile> files);
 
         public String GenerateImageWithInitial(String userName);
