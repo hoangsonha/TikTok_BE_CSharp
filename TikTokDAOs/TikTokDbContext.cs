@@ -22,7 +22,6 @@ public partial class TikTokDbContext : DbContext
     public virtual DbSet<Video> Videos { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-
         => optionsBuilder.UseSqlServer(GetConnectionString());
 
     private string GetConnectionString()
@@ -60,10 +59,14 @@ public partial class TikTokDbContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("fullName");
             entity.Property(e => e.Liked).HasColumnName("liked");
+            entity.Property(e => e.NickName)
+                .HasMaxLength(50)
+                .HasColumnName("nickName");
             entity.Property(e => e.Password)
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("password");
+            entity.Property(e => e.Status).HasColumnName("status");
         });
 
         modelBuilder.Entity<Video>(entity =>

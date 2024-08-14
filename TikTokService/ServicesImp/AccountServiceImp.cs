@@ -28,6 +28,13 @@ namespace TikTokService.ServicesImp
             
             return null;
         }
+
+        public List<Account> GetAllAccountsByNickNameAndFullName(string nickName, string fullName)
+        {
+            List<Account> accounts = _accountRepository.GetAllAccounts();
+            return accounts.Where(acc => acc.FullName.ToLower().Contains(fullName.ToLower()) || acc.NickName.ToLower().Contains(nickName.ToLower())).ToList();
+        }
+
         public Account AddAccount(Account account)
         {
             return _accountRepository.AddAccount(account);

@@ -21,5 +21,9 @@ public partial class Account
 
     public string? Contact { get; set; }
 
+    public string? NickName { get; set; }
+
+    public int? Status { get; set; }
+
     public virtual ICollection<Video> Videos { get; set; } = new List<Video>();
 }

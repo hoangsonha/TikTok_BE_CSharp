@@ -39,6 +39,15 @@ namespace TikTokAPI.Controllers
         }
 
 
+        [HttpGet("search")]
+        public ObjectResponse GetAccountByNickNameAndFullName(string fullName, string nickName)
+        {
+            List<Account> lists = _accountService.GetAllAccountsByNickNameAndFullName(fullName, nickName);
+            if (lists.Count > 0) return new ObjectResponse() { Code = "Success", Message = "Get accounts successfully", data = lists };
+            return new ObjectResponse() { Code = "Failed", Message = "Get accounts failed", data = null };
+        }
+
+
         [HttpGet("getAll")]
         public ObjectResponse GetAccounts()
         {
@@ -72,6 +81,9 @@ namespace TikTokAPI.Controllers
                 if(request.FullName != null)
                     account.FullName = request.FullName;
 
+                if (request.NickName != null)
+                    account.NickName = request.NickName;
+
                 Task<String> url = _uploadImageSerive.Upload(request.Avatar);
 
                 if(url.Result != null)
@@ -92,9 +104,10 @@ namespace TikTokAPI.Controllers
             {
                 Email = request.Email,
                 Password = request.Password,
+                NickName = generateRandom(),
                 Avatar = avatar,
                 Contact = null,
-                FullName = null,
+                FullName = generateRandom(),
                 Followed = 0,
                 Liked = 0
             };
@@ -105,6 +118,18 @@ namespace TikTokAPI.Controllers
         public Account DeleteAccount(int id)
         {
             return _accountService.DeleteAccount(id);
+        }
+
+        private String generateRandom()
+        {
+            string prefix = "user";
+            int length = 20;
+
+            int lengthRandom = length - prefix.Length;
+
+            String random = Guid.NewGuid().ToString().Replace("-", "").Substring(0, lengthRandom);
+
+            return prefix + random;
         }
 
     }
