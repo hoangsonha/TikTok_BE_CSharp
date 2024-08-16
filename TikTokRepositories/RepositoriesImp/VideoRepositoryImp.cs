@@ -26,6 +26,12 @@ namespace TikTokRepositories.RepositoriesImp
         {
             return _videoDAO.GetVideoByID(id);
         }
+
+        public List<Video> GetVideoByAccountID(int id)
+        {
+            List < Video > lists = GetAllVideos();
+            return lists.Where((vid) => vid.IdAccount == id).ToList();
+        }
         public Video AddVideo(Video video)
         {
             return _videoDAO.AddVideo(video);

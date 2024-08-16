@@ -39,6 +39,11 @@ namespace TikTokService.ServicesImp
             return _videoRepository.GetVideoByID(id);
         }
 
+        public List<Video> GetVideoByAccountID(int id)
+        {
+            return _videoRepository.GetVideoByAccountID(id);
+        }
+
         public Video UpdateVideo(Video video, int id)
         {
             return _videoRepository.UpdateAccount(video, id);

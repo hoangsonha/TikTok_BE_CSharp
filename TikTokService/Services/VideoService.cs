@@ -11,6 +11,7 @@ namespace TikTokService.Services
     {
         public List<Video> GetAllVideos();
         public Video GetVideoByID(int id);
+        public List<Video> GetVideoByAccountID(int id);
         public Video AddVideo(Video video);
         public Video UpdateVideo(Video video, int id);
         public Video DeleteVideo(int id);

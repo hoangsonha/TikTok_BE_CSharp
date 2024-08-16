@@ -40,6 +40,14 @@ namespace TikTokAPI.Controllers
             return new ObjectResponse() { Code = "Failed", Message = "Get videos failed", data = null };
         }
 
+        [HttpGet("getAll/account")]
+        public ObjectResponse GetVideosByAccountID(int accountID)
+        {
+            List<Video> lists = _videoService.GetVideoByAccountID(accountID);
+            if (lists.Count > 0) return new ObjectResponse() { Code = "Success", Message = "Get videos by accountID successfully", data = lists };
+            return new ObjectResponse() { Code = "Failed", Message = "Get videos by accountID failed", data = null };
+        }
+
         [HttpGet("liked")]
         public int GetTotalLikedByAccountID(int accountID)
         {

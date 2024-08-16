@@ -29,7 +29,7 @@ namespace TikTokService.ServicesImp
         private readonly String folderStorage = "Tiktok_BE";
         private readonly String folderStorageVideo = "Tiktok_Video";
 
-        private readonly FirebaseApp app;
+        private readonly FirebaseApp app = null;
 
         public UploadImageServiceImp()
         {

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TikTokDAOs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf5c493589843e5d09c25c286fd29738175fc29b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+21d74ff0f246ca0835541ef0dcccbf84600a34a8")]
 [assembly: System.Reflection.AssemblyProductAttribute("TikTokDAOs")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TikTokDAOs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

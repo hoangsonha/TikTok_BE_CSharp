@@ -13,10 +13,10 @@ namespace TikTokRepositories.Repositories
     {
         public List<Video> GetAllVideos();
         public Video GetVideoByID(int id);
+        public List<Video> GetVideoByAccountID(int id);
         public Video AddVideo(Video video);
         public Video UpdateAccount(Video video, int id);
         public Video DeleteAccount(int id);
-
         public int GetTotalLikedVideoByAccount(int accountID);
     }
 }
