@@ -11,6 +11,8 @@ using TikTokDAOs.Entities;
 using TikTokAPI.Request;
 using TikTokAPI.Response;
 using System.Collections;
+using Microsoft.IdentityModel.Tokens;
+using System.Runtime.InteropServices;
 
 namespace TikTokAPI.Controllers
 {
@@ -66,32 +68,68 @@ namespace TikTokAPI.Controllers
             return new ObjectResponse() { Code = "Failed", Message = "Get account failed", data = null };
         }
 
-        [HttpPut("account/update/{id}")]
-        public ObjectResponse PutAccount(int id, UpdateRequest request)
+        [HttpPut("update")]
+        public ObjectResponse PutAccount([FromForm] UpdateRequest request)
         {
-            Account account = _accountService.GetAccountByID(id);
+            Console.WriteLine($"ID {request.Id}| contact {request.Contact}| fullName {request.FullName}| nickName {request.NickName}");
+            Account account = _accountService.GetAccountByID(request.Id);
             if(account != null)
             {
-                if(request.Contact != null)
+                if(!request.Contact.IsNullOrEmpty())
                     account.Contact = request.Contact;
                 
-                if(request.Password != null && request.NewPassword != null && request.Password == account.Password)
+                if(!request.Password.IsNullOrEmpty() && !request.NewPassword.IsNullOrEmpty() && request.Password == account.Password)
                     account.Password = request.NewPassword;
                 
-                if(request.FullName != null)
+                if(!request.FullName.IsNullOrEmpty())
                     account.FullName = request.FullName;
 
-                if (request.NickName != null)
+                if (!request.NickName.IsNullOrEmpty())
                     account.NickName = request.NickName;
 
-                Task<String> url = _uploadImageSerive.Upload(request.Avatar);
+                if(request.Avatar != null)
+                {
+                    Task<String> url = _uploadImageSerive.Upload(request.Avatar);
 
-                if(url.Result != null)
-                    account.Avatar = url.Result;
+                    if (!url.Result.IsNullOrEmpty())
+                        account.Avatar = url.Result;
+                }
 
-                return new ObjectResponse() { Code = "Success", Message = "Update account successfully", data = _accountService.UpdateAccount(account, id) };
+                return new ObjectResponse() { Code = "Success", Message = "Update account successfully", data = _accountService.UpdateAccount(account, request.Id) };
             }
-            return new ObjectResponse() { Code = "Success", Message = "Update account successfully", data = account };
+            return new ObjectResponse() { Code = "Failed", Message = "Update account failed", data = null };
+        }
+
+        [HttpPost("account/update/account")]
+        public ObjectResponse UpdateNe(UpdateRequest request)
+        {
+            Console.WriteLine($"ID {request.Id}| contact {request.Contact}| fullName {request.FullName}| nickName {request.NickName}");
+            Account account = _accountService.GetAccountByID(request.Id);
+            if (account != null)
+            {
+                if (!request.Contact.IsNullOrEmpty())
+                    account.Contact = request.Contact;
+
+                if (!request.Password.IsNullOrEmpty() && !request.NewPassword.IsNullOrEmpty() && request.Password == account.Password)
+                    account.Password = request.NewPassword;
+
+                if (!request.FullName.IsNullOrEmpty())
+                    account.FullName = request.FullName;
+
+                if (!request.NickName.IsNullOrEmpty())
+                    account.NickName = request.NickName;
+
+                if (request.Avatar != null)
+                {
+                    Task<String> url = _uploadImageSerive.Upload(request.Avatar);
+
+                    if (!url.Result.IsNullOrEmpty())
+                        account.Avatar = url.Result;
+                }
+
+                return new ObjectResponse() { Code = "Success", Message = "Update account successfully", data = _accountService.UpdateAccount(account, request.Id) };
+            }
+            return new ObjectResponse() { Code = "Failed", Message = "Update account failed", data = null };
         }
 
         [HttpPost("account/create")]
