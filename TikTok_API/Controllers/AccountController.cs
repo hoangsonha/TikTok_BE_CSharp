@@ -13,11 +13,12 @@ using TikTokAPI.Response;
 using System.Collections;
 using Microsoft.IdentityModel.Tokens;
 using System.Runtime.InteropServices;
+using X.PagedList.Extensions;
 
 namespace TikTokAPI.Controllers
 {
     //[Route("api/[controller]")]
-    [Route("")]
+    [Route("account")]
     [ApiController]
     public class AccountController : ControllerBase
     {
@@ -58,7 +59,20 @@ namespace TikTokAPI.Controllers
             return new ObjectResponse() { Code = "Failed", Message = "Get accounts failed", data = null };
         }
 
-        [HttpGet("account/{id}")]
+        [HttpGet("getAllByPage")]
+        public ObjectPageList GetPage(int page = 1, int pageSize = 5)
+        {
+            int totalItem = _accountService.GetAllAccounts().Count();
+            List<Account> lists = _accountService.GetAllAccounts();
+            var result = lists.ToPagedList(page, pageSize);
+            if (lists.Count > 0)
+            {
+                return new ObjectPageList() { Code = "Success", Message = "Get accounts successfully", data = result, CurrentPage= result.PageNumber, PageSize = result.PageSize, TotalItem= result.TotalItemCount, TotalPage = result.PageCount };
+            }
+            return new ObjectPageList() { Code = "Failed", Message = "Get accounts failed", data = null, CurrentPage = 0, PageSize = 0, TotalItem = 0, TotalPage = 0 };
+        }
+
+        [HttpGet("get/{id}")]
         public ObjectResponse GetAccount(int id)
         {
             var account = _accountService.GetAccountByID(id);
@@ -100,39 +114,7 @@ namespace TikTokAPI.Controllers
             return new ObjectResponse() { Code = "Failed", Message = "Update account failed", data = null };
         }
 
-        [HttpPost("account/update/account")]
-        public ObjectResponse UpdateNe(UpdateRequest request)
-        {
-            Console.WriteLine($"ID {request.Id}| contact {request.Contact}| fullName {request.FullName}| nickName {request.NickName}");
-            Account account = _accountService.GetAccountByID(request.Id);
-            if (account != null)
-            {
-                if (!request.Contact.IsNullOrEmpty())
-                    account.Contact = request.Contact;
-
-                if (!request.Password.IsNullOrEmpty() && !request.NewPassword.IsNullOrEmpty() && request.Password == account.Password)
-                    account.Password = request.NewPassword;
-
-                if (!request.FullName.IsNullOrEmpty())
-                    account.FullName = request.FullName;
-
-                if (!request.NickName.IsNullOrEmpty())
-                    account.NickName = request.NickName;
-
-                if (request.Avatar != null)
-                {
-                    Task<String> url = _uploadImageSerive.Upload(request.Avatar);
-
-                    if (!url.Result.IsNullOrEmpty())
-                        account.Avatar = url.Result;
-                }
-
-                return new ObjectResponse() { Code = "Success", Message = "Update account successfully", data = _accountService.UpdateAccount(account, request.Id) };
-            }
-            return new ObjectResponse() { Code = "Failed", Message = "Update account failed", data = null };
-        }
-
-        [HttpPost("account/create")]
+        [HttpPost("create")]
         public ObjectResponse CreateAccount(RegisterRequest request)
         {
             String base64 = _uploadImageSerive.GenerateImageWithInitial(request.Email);
@@ -147,12 +129,13 @@ namespace TikTokAPI.Controllers
                 Contact = null,
                 FullName = generateRandom(),
                 Followed = 0,
-                Liked = 0
+                Liked = 0,
+                Status = 1
             };
             return new ObjectResponse() { Code = "Success", Message = "Add account successfully", data = _accountService.AddAccount(account) };
         }
 
-        [HttpDelete("account/delete/{id}")]
+        [HttpDelete("delete/{id}")]
         public Account DeleteAccount(int id)
         {
             return _accountService.DeleteAccount(id);

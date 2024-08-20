@@ -12,6 +12,7 @@ using TikTokService.Services;
 using TikTokService.ServicesImp;
 using TikTokDAOs.Entities;
 using TikTokAPI.Response;
+using X.PagedList.Extensions;
 
 
 namespace TikTokAPI.Controllers
@@ -48,14 +49,14 @@ namespace TikTokAPI.Controllers
             return new ObjectResponse() { Code = "Failed", Message = "Get videos by accountID failed", data = null };
         }
 
-        [HttpGet("liked")]
+        [HttpGet("liked/account")]
         public int GetTotalLikedByAccountID(int accountID)
         {
             return _videoService.GetTotalLikedVideoByAccount(accountID);
         }
 
 
-        [HttpGet("{id}")]
+        [HttpGet("get/{id}")]
         public Video GetVideo(int id)
         {
             var video = _videoService.GetVideoByID(id);
@@ -65,15 +66,15 @@ namespace TikTokAPI.Controllers
             return video;
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("update/{id}")]
         public Video PutAccount(int id, Video video)
         {
             return _videoService.UpdateVideo(video, id);
         }
 
 
-        [HttpPost("video/create")]
-        public Video PostAccount(VideoRequest requestVideo)
+        [HttpPost("create")]
+        public Video PostAccount([FromForm] VideoRequest requestVideo)
         {
 
             Task<string> srcVideo = _uploadImageSerive.UploadVideo(requestVideo.SrcVideo);
@@ -89,13 +90,29 @@ namespace TikTokAPI.Controllers
         }
 
 
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{id}")]
         public Video DeleteAccount(int id)
         {
             return _videoService.DeleteVideo(id);
         }
 
-        
+
+
+
+        [HttpGet("page")]
+        public List<Video> GetPage(int page = 1, int pageSize = 5)
+        {
+            List<Video> lists = _videoService.GetAllVideos().ToPagedList(page, pageSize).ToList();
+            if(lists.Count > 0)
+            {
+                return lists;
+            }
+            return null;
+        }
+
+
+
+
 
     }
 }
