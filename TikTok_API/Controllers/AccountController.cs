@@ -65,7 +65,7 @@ namespace TikTokAPI.Controllers
             int totalItem = _accountService.GetAllAccounts().Count();
             List<Account> lists = _accountService.GetAllAccounts();
             var result = lists.ToPagedList(page, pageSize);
-            if (lists.Count > 0)
+            if (result.Count > 0)
             {
                 return new ObjectPageList() { Code = "Success", Message = "Get accounts successfully", data = result, CurrentPage= result.PageNumber, PageSize = result.PageSize, TotalItem= result.TotalItemCount, TotalPage = result.PageCount };
             }
@@ -76,6 +76,16 @@ namespace TikTokAPI.Controllers
         public ObjectResponse GetAccount(int id)
         {
             var account = _accountService.GetAccountByID(id);
+
+            if (account != null) return new ObjectResponse() { Code = "Success", Message = "Get account successfully", data = account };
+
+            return new ObjectResponse() { Code = "Failed", Message = "Get account failed", data = null };
+        }
+
+        [HttpGet("get/nickName")]
+        public ObjectResponse GetAccount(string nickName)
+        {
+            var account = _accountService.GetAccountByNickName(nickName);
 
             if (account != null) return new ObjectResponse() { Code = "Success", Message = "Get account successfully", data = account };
 

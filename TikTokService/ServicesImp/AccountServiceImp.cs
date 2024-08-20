@@ -7,6 +7,7 @@ using TikTokRepositories.Repositories;
 using TikTokRepositories.RepositoriesImp;
 using TikTokService.Services;
 using TikTokDAOs.Entities;
+using TikTokDAOs;
 
 namespace TikTokService.ServicesImp
 {
@@ -50,6 +51,10 @@ namespace TikTokService.ServicesImp
             return _accountRepository.GetAccountByID(id);
         }
 
+        public Account GetAccountByNickName(String nickName)
+        {
+            return _accountRepository.GetAccountByNickName(nickName);
+        }
         public List<Account> GetAllAccounts()
         {
             return _accountRepository.GetAllAccounts();

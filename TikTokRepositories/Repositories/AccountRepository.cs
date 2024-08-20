@@ -13,6 +13,7 @@ namespace TikTokRepositories.Repositories
     {
         public List<Account> GetAllAccounts();
         public Account GetAccountByEmail(String email);
+        public Account GetAccountByNickName(String nickName);
         public Account GetAccountByID(int id);
         public Account AddAccount(Account account);
         public Account UpdateAccount(Account account, int id);
